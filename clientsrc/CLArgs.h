@@ -36,11 +36,12 @@ public:
      *
      */
 
-    class NoSuchVarException : public exception
+    class NoSuchVarException : public std::exception
     {
     public:
         NoSuchVarException(const std::string& what="Variable does not exist") : _what(what) {}
-        virtual const char* what() const { return _what.c_str(); }
+        virtual ~NoSuchVarException() throw() {}
+        virtual const char* what() const throw() { return _what.c_str(); }
     private:
         std::string _what;
     };

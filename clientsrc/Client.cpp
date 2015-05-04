@@ -20,6 +20,7 @@ Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
 #include <iostream>
 using namespace std;
@@ -49,6 +50,9 @@ const string Client::LOGFILE = "client.log";
 
 extern int errno;
 
+void defaultPrintFunc(const byte type, const string& message);
+void* sendThread(void* arg);
+void* recvThread(void* arg);
 
 Client::Client(Module& uiModule) : m_socket(-1), m_connected(false), m_sendStarted(false), m_recvStarted(false), m_printFunc(NULL)
 {

@@ -3,17 +3,12 @@ CXX = g++
 CLIENT = poopie
 SERVER = poopied
 
-# architecture variables
-ARCH=i386
-#ARCH=i586
-#ARCH=i686
-
 # source directories
 CLIENT_SOURCE = clientsrc
 SERVER_SOURCE = serversrc
 
 # compiler options
-BASE_CFLAGS = -Wall -Winline -Wstrict-prototypes -march=$(ARCH) -D_REENTRANT
+BASE_CFLAGS = -Wall -Winline -D_REENTRANT
 CFLAGS = $(BASE_CFLAGS) -DDEBUG -g -gstabs+ -fno-default-inline
 #CFLAGS = $(BASE_CFLAGS) -DNDEBUG -O3 -finline-functions
 CLIENT_LD_FLAGS = -lpthread -ldl

@@ -37,7 +37,7 @@ public:
      */
 
     Module();
-    explicit Module(const string& filename);    // doesn't open the module
+    explicit Module(const std::string& filename);    // doesn't open the module
     ~Module() throw();
 
 public:

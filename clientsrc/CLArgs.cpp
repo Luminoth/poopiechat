@@ -38,7 +38,7 @@ const bool CLArgs::peakVar(const std::string& name)
 }
 
 
-const string& CLArgs::findVar(const std::string& name) throw(NoSuchVarException)
+const std::string& CLArgs::findVar(const std::string& name) throw(NoSuchVarException)
 {
     std::map<std::string, std::string>::iterator iterator;
     iterator = m_argMap.find(name);

@@ -18,6 +18,7 @@ Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 ==========
 */
 
+#include <iostream>
 
 #include "main.h"
 
@@ -39,14 +40,14 @@ void construct(const COMMLINK communicationLink)
 
     // get the user's handle
     do{
-        cout << "What is your handle? " << flush;
-        getline(cin, g_handle);
+        std::cout << "What is your handle? " << std::flush;
+        getline(std::cin, g_handle);
     } while(g_handle.empty());
 
     // get the server to connect to
     do {
-        cout << "What server would you like to connect to? " << flush;
-        getline(cin, g_server);
+        std::cout << "What server would you like to connect to? " << std::flush;
+        getline(std::cin, g_server);
     } while(g_server.empty());
 }
 
@@ -62,7 +63,7 @@ void run()
     string input;
     while(!g_quit) {
         print(PRINT_NORMAL, g_handle  + "# ");
-        getline(cin, input);
+        getline(std::cin, input);
 
         // handle special inputs
         if(input == "exit" || input == "quit") {
@@ -90,24 +91,24 @@ void print(const byte type, const string& message)
     switch(type)
     {
     case PRINT_ERROR:
-        cout << "\n\033[1;34;40m" << message << "\033[00m\n";
+        std::cout << "\n\033[1;34;40m" << message << "\033[00m\n";
         break;
     case PRINT_CONNECTION:
-        cout << "\033[1;34;40m" << message << "\033[00m";
+        std::cout << "\033[1;34;40m" << message << "\033[00m";
         break;
     case PRINT_MESSAGE:
     case PRINT_SERVER:
         pos = message.find(':');
         if(string::npos != pos)
-            cout << "\n\033[1;32;40m" << message.substr(0, pos) << "\033[00m" << message.substr(pos, message.length()) << "\n";
+            std::cout << "\n\033[1;32;40m" << message.substr(0, pos) << "\033[00m" << message.substr(pos, message.length()) << "\n";
         else
-            cout << message;
+            std::cout << message;
         break;
     default:
-        cout << message;
+        std::cout << message;
     }
-    cout << flush;
-//    cout << "\n" << g_handle << "# " << flush;
+    std::cout << std::flush;
+//    std::cout << "\n" << g_handle << "# " << std::flush;
 }
 
 
