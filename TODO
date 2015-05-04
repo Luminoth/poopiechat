@@ -1,0 +1,3 @@
+client Ctrl+C isn't killing all threads
+client needs more default functions
+the server keeps track of the number of clients (to send no one's here message)
